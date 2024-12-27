@@ -1,0 +1,33 @@
+@model IEnumerable<Gestion_NSA.Models.Livraison>
+
+<h2>Liste des Livraisons</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Adresse Livraison</th>
+            <th>Livreur</th>
+            <th>Commande</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var livraison in Model)
+        {
+            <tr>
+                <td>@livraison.Date.ToShortDateString()</td>
+                <td>@livraison.AdresseLivraison</td>
+                <td>@livraison.Livreur.Nom</td>
+                <td>@livraison.Commande.Id</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@livraison.Id">Détails</a> |
+                    <a asp-action="Edit" asp-route-id="@livraison.Id">Modifier</a> |
+                    <a asp-action="Delete" asp-route-id="@livraison.Id">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Créer une nouvelle livraison</a>

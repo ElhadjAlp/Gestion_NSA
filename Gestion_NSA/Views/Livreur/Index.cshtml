@@ -1,0 +1,31 @@
+@model IEnumerable<Gestion_NSA.Models.Livreur>
+
+<h2>Liste des Livreurs</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Téléphone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var livreur in Model)
+        {
+            <tr>
+                <td>@livreur.Nom</td>
+                <td>@livreur.Prenom</td>
+                <td>@livreur.Telephone</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@livreur.Id">Détails</a> |
+                    <a asp-action="Edit" asp-route-id="@livreur.Id">Modifier</a> |
+                    <a asp-action="Delete" asp-route-id="@livreur.Id">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Créer un nouveau livreur</a>

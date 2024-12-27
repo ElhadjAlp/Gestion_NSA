@@ -1,0 +1,53 @@
+@using Gestion_NSA.Models
+@model Client
+
+@{
+    ViewData["Title"] = "Client ";
+}
+
+<div class="card">
+    <div class="card-header">Création client</div>
+    <div class="card-body">
+
+        <form asp-action="Create" method="post">
+            <!-- Champ Nom -->
+            <div class="mb-3">
+                <label for="" class="form-label" asp-for="Nom">Nom</label>
+                <input type="text" class="form-control" asp-for="Nom" id="" />
+                <span id="emailHelpId" class="form-text text-danger" asp-validation-for="Nom"></span>
+            </div>
+
+            <!-- Champ Prénom -->
+            <div class="mb-3">
+                <label for="" class="form-label" asp-for="Prenom">Prénom</label>
+                <input type="text" class="form-control" asp-for="Prenom" id="" />
+                <span id="emailHelpId" class="form-text text-danger" asp-validation-for="Prenom"></span>
+            </div>
+
+            <!-- Champ Téléphone -->
+            <div class="mb-3">
+                <label for="" class="form-label" asp-for="Telephone">Téléphone</label>
+                <input type="text" class="form-control" asp-for="Telephone" id="" />
+                <span id="emailHelpId" class="form-text text-danger" asp-validation-for="Telephone"></span>
+            </div>
+
+            <!-- Champ Adresse -->
+            <div class="mb-3">
+                <label for="" class="form-label" asp-for="Adresse">Adresse</label>
+                <textarea type="text" id="" class="form-control" asp-for="Adresse"></textarea>
+            </div>
+
+            <!-- Champ Solde -->
+            <div class="mb-3">
+                <label for="" class="form-label" asp-for="Solde">Solde</label>
+                <input type="number" class="form-control" asp-for="Solde" id="" />
+                <span id="emailHelpId" class="form-text text-danger" asp-validation-for="Solde"></span>
+            </div>
+
+            <!-- Bouton de soumission -->
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-outline-dark" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

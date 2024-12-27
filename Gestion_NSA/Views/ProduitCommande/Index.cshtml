@@ -1,0 +1,34 @@
+@model IEnumerable<Gestion_NSA.Models.ProduitCommande>
+
+@{
+    ViewData["Title"] = "Liste des ProduitCommandes";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Commande ID</th>
+            <th>Produit ID</th>
+            <th>Quantité</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CommandeId</td>
+                <td>@item.ProduitId</td>
+                <td>@item.Quantite</td>
+                <td>
+                    <a asp-action="Edit" asp-route-commandeId="@item.CommandeId" asp-route-produitId="@item.ProduitId" class="btn btn-primary">Modifier</a>
+                    <a asp-action="Delete" asp-route-commandeId="@item.CommandeId" asp-route-produitId="@item.ProduitId" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-success">Ajouter une association</a>

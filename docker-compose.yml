@@ -1,0 +1,35 @@
+
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: nsa_sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=NSA_Password123!
+      - MSSQL_PID=Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - nsa_sqlserver_data:/var/opt/mssql
+    networks:
+      - nsa_network
+
+  adminer:
+    image: adminer
+    container_name: nsa_adminer
+    ports:
+      - "8080:8080"
+    networks:
+      - nsa_network
+    depends_on:
+      - db
+
+volumes:
+  nsa_sqlserver_data:
+
+networks:
+  nsa_network:
+    driver: bridge
+
+

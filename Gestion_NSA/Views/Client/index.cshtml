@@ -1,0 +1,54 @@
+@model IEnumerable<Gestion_NSA.Models.Client>
+
+@{
+    ViewData["Title"] = "Client Page";
+}
+
+<div class="card">
+    <div class="card-header">Liste clients</div>
+    <div class="card-body">
+        <div class="my-2 d-flex justify-content-end">
+            <a class="btn btn-outline-dark" asp-action="Create">Nouveau client</a>
+        </div>
+
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-primary" role="alert">
+                <strong>@TempData["Message"]</strong>
+            </div>
+        }
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prenom</th>
+                        <th scope="col">Téléphone</th>
+                        <th scope="col">Adresse</th>
+                        <th scope="col">Solde</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var client in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => client.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => client.Nom)</td>
+                             <td>@Html.DisplayFor(modelItem => client.Prenom)</td>
+                            <td>@Html.DisplayFor(modelItem => client.Telephone)</td>
+                            <td>@Html.DisplayFor(modelItem => client.Adresse)</td>
+                             <td>@Html.DisplayFor(modelItem => client.Solde)</td>
+                            <td>
+                                <a href="@Url.Action("Edit", "Client", new { id = client.Id })"
+                                   class="btn btn-outline-secondary">Modifier</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+@model IEnumerable<Gestion_NSA.Models.Paiement>
+
+<h2>Liste des Paiements</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Montant</th>
+            <th>Référence</th>
+            <th>Date</th>
+            <th>Client</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var paiement in Model)
+        {
+            <tr>
+                <td>@paiement.Type</td>
+                <td>@paiement.Montant</td>
+                <td>@paiement.Reference</td>
+                <td>@paiement.Date.ToShortDateString()</td>
+                <td>@paiement.Client?.Nom</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@paiement.Id">Détails</a> |
+                    <a asp-action="Edit" asp-route-id="@paiement.Id">Modifier</a> |
+                    <a asp-action="Delete" asp-route-id="@paiement.Id">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Ajouter un paiement</a>
